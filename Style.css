@@ -105,3 +105,14 @@ li{
         transform: translate(0);
     }
 }
+
+/* score board============================== */
+.scoreboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.scoreItem {
+    color: white;
+    margin: 1rem 2rem;
+}

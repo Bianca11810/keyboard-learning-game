@@ -1,6 +1,25 @@
 const keys = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
 const timestamps = [];
 
+let currentScore = document.getElementById('currentScore')
+let highScore = document.getElementById('highScore')
+let score =  0
+let hScore = 0
+const setScore = (success) => {
+    // console.log(banana);
+    if (success === true){
+        score = score + 1
+        currentScore.innerHTML = `Current Score: ${score}`
+        if (score > hScore){
+            hScore = score
+            highScore.innerHTML = `High Score: ${hScore}`
+        }
+    }else {
+        score = 0
+        currentScore.innerHTML = `Current Score: ${score}`
+    }
+}
+
 function getRandomNumber(min,max){
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -39,9 +58,11 @@ document.addEventListener("keyup", event => {
     if(keyPressed === highlightedKey.id){
         timestamps.unshift(getTimestamp());
         const elaspedTime = timestamps[0] - timestamps[1];
-
+        setScore(true)
         highlightedKey.classList.remove("selected");
         targetRandomKey();
+    }else{
+        setScore(false)
     }
 
 })
